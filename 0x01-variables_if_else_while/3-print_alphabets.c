@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 /**
  * main - This is the main function
  *
@@ -9,7 +8,7 @@
 int main(void)
 {
 	char c;
-	
+
 	for (c = 'a'; c <= 'z'; c++)
 	{
 		putchar(c);
