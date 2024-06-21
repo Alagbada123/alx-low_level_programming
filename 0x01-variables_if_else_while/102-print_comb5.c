@@ -6,33 +6,31 @@
  * Return: 0 when successful
  *
  */
-
 int main(void)
 {
-	int i, j;
+	int a = 0;
+	int b;
 
-	for (i = 0; i <= 98; i++)
+	while (a <= 98)
 	{
-		int first_digit_i = i / 10;
-		int second_digit_i = i % 10;
-
-		for (j = i + 1; j <= 99; j++)
+		b = a + 1;
+		while (b <= 99)
 		{
-			int first_digit_j = j / 10;
-			int second_digit_j = j % 10;
-			
-			putchar(first_digit_i + '0');
-			putchar(second_digit_i = '0');
+			putchar(a / 10 % 10 + '0');
+			putchar(a % 10 + '0');
 			putchar(' ');
-			putchar(first_digit_j + '0');
-			putchar(second_digit_j = '0');
-			if (!(i == 98 && j == 99))
+			putchar(b / 10 % 10 + '0');
+			putchar(b % 10 + '0');
+			if (a == 98 && b == 99)
+				putchar('\n');
+			else
 			{
 				putchar(',');
 				putchar(' ');
 			}
+			b++;
 		}
+		a++;
 	}
-	putchar('\n');
 	return (0);
 }
