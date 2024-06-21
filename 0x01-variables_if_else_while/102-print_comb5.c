@@ -15,18 +15,15 @@ int main(void)
 	{
 		int first_digit_i = i / 10;
 		int second_digit_i = i % 10;
-		
 		for (j = i + 1; j <= 99; j++)
 		{
 			int first_digit_j = j / 10;
 			int second_digit_j = j % 10;
-			
 			putchar(first_digit_i + '0');
-			putchar(second_digit_i + '0');
+			putchar(second_digit_i = '0');
 			putchar(' ');
 			putchar(first_digit_j + '0');
-			putchar(second_digit_j + '0');
-			
+			putchar(second_digit_j = '0');
 			if (!(i == 98 && j == 99))
 			{
 				putchar(',');
@@ -34,8 +31,6 @@ int main(void)
 			}
 		}
 	}
-	
 	putchar('\n');
-	
-	return 0;
+	return (0);
 }
