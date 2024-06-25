@@ -10,18 +10,16 @@ int main(void)
 
 void print_first_98_fibonacci(void)
 {
-	unsigned long fib1_high = 0, fib1_low = 1;
-	unsigned long fib2_high = 0, fib2_low = 2;
+	unsigned long high1 = 0, low1 = 1;
+	unsigned long high2 = 0, low2 = 2;
 	unsigned long temp_high, temp_low;
 	int i;
 
 	printf("%lu, %lu", low1, low2);
-
 	for (i = 3; i <= 98; i++)
 	{
 		temp_low = low1 + low2;
 		temp_high = high1 + high2;
-
 		if (temp_low >= 1000000000)
 		{
 			temp_low -= 1000000000;
@@ -33,7 +31,7 @@ void print_first_98_fibonacci(void)
 		}
 		else
 		{
-			print(", %lu", temp_low);
+			printf(", %lu", temp_low);
 		}
 		low1 = low2;
 		high1 = high2;
