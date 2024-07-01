@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * Prints the first n elements of an integer array, separated by commas and followed by a new line.
+ * print_array - print first n elements of an integer array,followed by a new line.
  *
  * @param a Pointer to the integer array.
  * @param n Number of elements to print.
