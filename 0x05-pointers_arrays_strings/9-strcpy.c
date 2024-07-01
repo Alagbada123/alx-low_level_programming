@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /**
  * my_strcpy - Copies the string pointed to by src, including the
