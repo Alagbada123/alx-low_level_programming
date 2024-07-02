@@ -1,12 +1,18 @@
 #include <stdio.h>
 #include "9-strcpy.h"
 
-int main()
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
 {
-	char src[] = "Hello, world!";
-	char dest[20];
+	char s1[98];
+	char *ptr;
 
-	my_strcpy(dest, src);
-	printf("Copied string: %s\n", dest);
+	ptr = _strcpy(s1, "First, solve the problem. Then, write the code\n");
+	printf("%s", s1);
+	printf("%s", ptr);
 	return (0);
 }

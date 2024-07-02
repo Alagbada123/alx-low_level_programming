@@ -1,8 +1,7 @@
-#include <stdio.h>
-#include <string.h>
+#include "9-strcpy.h"
 
 /**
- * my_strcpy - Copies the string pointed to by src, including the
+ * _strcpy - Copies the string pointed to by src, including the
  *             terminating null byte (\0), to the buffer pointed to by dest.
  *
  * @dest: Pointer to the destination buffer.
@@ -11,7 +10,7 @@
  * Return: Pointer to dest.
  */
 
-char *my_strcpy(char *dest, const char *src)
+char *_strcpy(char *dest, const char *src)
 {
 	char *dest_start = dest;
 
