@@ -30,7 +30,7 @@ int main(void)
 	printf("Generated Password: %s\n", password);
 	return (0);
 }
-void generatePassword(char *password, int length);
+void generatePassword(char *password, int length)
 {
 	const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	int i;
