@@ -1,44 +1,31 @@
-#include <stdio.h>
-#include <ctype.h>
+#include "main.h"
 
 /**
- * cap_string - Capitalizes all words in a string.
- * @str: The string to be capitalized.
- *
- * This function modifies the input string in place to capitalize the first
- * character of each word. Words are separated by spaces, tabs, new lines,
- * commas, semicolons, periods, exclamation marks, question marks, quotes,
- * parentheses, braces, and brackets.
- *
- * Return: Pointer to the modified string.
+ * cap_string - capitalizes all words in a string
+ * @s: string
+ * Return: address of s
  */
-char *cap_string(char *str)
+char *cap_string(char *s)
 {
-	int capitalize_next = 1;
+	int i = 0, j;
+	char a[] = " \t\n,;.!?\"(){}";
 
-	while (*str != '\0')
+	while (*(s + i))
 	{
-		if (*str == ' ' || *str == '\t' || *str == '\n' ||
-			*str == ',' || *str == ';' || *str == '.' ||
-			*str == '!' || *str == '?' || *str == '"' ||
-			*str == '(' || *str == ')' || *str == '{' ||
-			*str == '}')
+		if (*(s + i) >= 'a' && *(s + i) <= 'z')
 		{
-			capitalize_next = 1;
-		}
-		else
-		{
-			if (capitalize_next && isalpha(*str))
-			{
-				*str = toupper(*str);
-				capitalize_next = 0;
-			}
+			if (i == 0)
+				*(s + i) -= 'a' - 'A';
 			else
 			{
-				capitalize_next = 0;
+				for (j = 0; j <= 12; j++)
+				{
+					if (a[j] == *(s + i - 1))
+						*(s + i) -= 'a' - 'A';
+				}
 			}
 		}
-		str++;
+		i++;
 	}
-	return (str++);
+	return (s);
 }
