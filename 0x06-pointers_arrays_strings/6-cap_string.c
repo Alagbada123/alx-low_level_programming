@@ -2,15 +2,17 @@
 #include <ctype.h>
 
 /**
- * capitalize_words - Capitalizes all words in a string.
+ * cap_string - Capitalizes all words in a string.
  * @str: The string to be capitalized.
  *
  * This function modifies the input string in place to capitalize the first
  * character of each word. Words are separated by spaces, tabs, new lines,
  * commas, semicolons, periods, exclamation marks, question marks, quotes,
  * parentheses, braces, and brackets.
+ *
+ * Return: Pointer to the modified string.
  */
-void capitalize_words(char *str)
+char *cap_string(char *str)
 {
 	int capitalize_next = 1;
 
@@ -38,4 +40,5 @@ void capitalize_words(char *str)
 		}
 		str++;
 	}
+	return (str++);
 }
