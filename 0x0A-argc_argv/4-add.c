@@ -6,7 +6,7 @@
  * @argc: argument count
  * @argv: arguments
  *
- * Return: 0
+ * Return: 0 on success, 1 on error
  */
 int main(int argc, char **argv)
 {
@@ -18,7 +18,6 @@ int main(int argc, char **argv)
 		printf("0\n");
 		return (0);
 	}
-
 	for (i = 1; argv[i]; i++)
 	{
 		n = strtol(argv[i], &flag, 10);
@@ -33,6 +32,5 @@ int main(int argc, char **argv)
 		}
 	}
 	printf("%d\n", sum);
-
 	return (0);
 }
