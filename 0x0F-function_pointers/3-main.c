@@ -7,7 +7,6 @@
 * main - This is the main function
 * @argc: argument count
 * @argv: arguments
-* 
 *
 * Return: 0 when true
 */
