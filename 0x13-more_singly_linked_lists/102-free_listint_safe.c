@@ -1,112 +1,65 @@
 #include "lists.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
- * detect_loop - detects if there is a loop in the list
- * @head: pointer to the head of the list
- * Return: 1 if loop is found, 0 otherwise
+ * _Z - reallocates memory for an array of pointers
+ * to the nodes in a linked list
+ * @list: the old list to append
+ * @size: size of the new list (always one more than the old list)
+ * @new: new node to add to the list
+ *
+ * Return: pointer to the new list
  */
-int detect_loop(listint_t *head)
+listint_t **_Z(listint_t **list, size_t size, listint_t *new)
 {
-	listint_t *slow = head, *fast = head;
+	listint_t **newlist;
+	size_t a;
 
-	while (slow && fast && fast->next)
+	newlist = malloc(size * sizeof(listint_t *));
+	if (newlist == NULL)
 	{
-		slow = slow->next;
-		fast = fast->next->next;
-
-		if (slow == fast)
-			return (1);
+		free(list);
+		exit(98);
 	}
-	return (0);
+	for (a = 0; a < size - 1; a++)
+		newlist[a] = list[a];
+	newlist[a] = new;
+	free(list);
+	return (newlist);
 }
 
 /**
- * free_list_no_loop - frees a list with no loop
- * @head: pointer to the head of the list
- * Return: number of nodes freed
+ * free_listint_safe - frees a listint_t linked list.
+ * @head: double pointer to the start of the list
+ *
+ * Return: the number of nodes in the list
  */
-size_t free_list_no_loop(listint_t **head)
+size_t free_listint_safe(listint_t **head)
 {
-	listint_t *tempo;
-	size_t counter = 0;
+	size_t a, counter = 0;
+	listint_t **list = NULL;
+	listint_t *next;
 
-	while (*head)
+	if (head == NULL || *head == NULL)
+		return (counter);
+	while (*head != NULL)
 	{
-		tempo = *head;
-		*head = (*head)->next;
-		free(tempo);
-		counter++;
-	}
-	return (counter);
-}
-
-/**
- * free_list_with_loop - frees a list with a loop
- * @head: pointer to the head of the list
- * @loop_node: pointer to a node in the loop
- * Return: number of nodes freed
- */
-size_t free_list_with_loop(listint_t **head, listint_t *loop_node)
-{
-	listint_t *tempo;
-	size_t counter = 0;
-	listint_t *slow = *head;
-
-	while (slow != loop_node)
-	{
-		tempo = slow;
-		slow = slow->next;
-		free(tempo);
-		counter++;
-	}
-	while (loop_node && loop_node->next != loop_node)
-	{
-		tempo = loop_node->next;
-		loop_node->next = loop_node->next->next;
-		free(tempo);
-		counter++;
-	}
-	free(loop_node);
-	counter++;
-	*head = NULL;
-	return (counter);
-}
-
-/**
- * free_listint_safe - frees a listint_t list, even with a loop
- * @h: pointer to pointer to the head of the list
- * Return: size of the list that was freed
- */
-size_t free_listint_safe(listint_t **h)
-{
-	size_t counter = 0;
-	listint_t *loop_node;
-
-	if (h == NULL || *h == NULL)
-		return (0);
-
-	if (detect_loop(*h))
-	{
-		listint_t *slow = *h, *fast = *h;
-
-		while (slow && fast && fast->next)
+		for (a = 0; a < counter; a++)
 		{
-			slow = slow->next;
-			fast = fast->next->next;
-
-			if (slow == fast)
+			if (*head == list[a])
 			{
-				loop_node = slow;
-				break;
+				*head = NULL;
+				free(list);
+				return (counter);
 			}
 		}
-		counter = free_list_with_loop(h, loop_node);
+		counter++;
+		list = _Z(list, counter, *head);
+		next = (*head)->next;
+		free(*head);
+		*head = next;
 	}
-	else
-	{
-		counter = free_list_no_loop(h);
-	}
-	*h = NULL;
+	free(list);
 	return (counter);
 }
