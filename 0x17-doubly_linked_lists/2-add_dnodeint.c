@@ -1,5 +1,5 @@
 #include "lists.h"
-#include <stdlib.h>
+
 /**
  * add_dnodeint - adds a new node at the beginning
  * of a dlistint_t list
@@ -8,17 +8,17 @@
  * @n: value of the element
  * Return: the address of the new element
  */
-dlistint_t *add_dnoteint(dlistint_t **head, const int n)
+dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
-	dlistint_t *New;
+	dlistint_t *new_node;
 	dlistint_t *h;
 
-	New = malloc(sizeof(dlistint_t));
-	if (New == NULL)
+	new_node = malloc(sizeof(dlistint_t));
+	if (new_node == NULL)
 		return (NULL);
 
-	New->n = n;
-	New->prev = NULL;
+	new_node->n = n;
+	new_node->prev = NULL;
 	h = *head;
 
 	if (h != NULL)
@@ -27,12 +27,12 @@ dlistint_t *add_dnoteint(dlistint_t **head, const int n)
 			h = h->prev;
 	}
 
-	New->next = h;
+	new_node->next = h;
 
 	if (h != NULL)
-		h->prev = New;
+		h->prev = new_node;
 
-	*head = New;
+	*head = new_node;
 
-	return (New);
+	return (new_node);
 }
